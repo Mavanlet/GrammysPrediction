@@ -9,7 +9,7 @@ The Random Forest model consistently outperformed logistic regression in predict
 ### Name & URL
 | Name         | URL |
 |--------------|-----|
-| Gradio App   | [Hugging Face Space](https://huggingface.co/spaces/your-username/grammy-prediction) *(Link optional)* |
+| Gradio App   | [Hugging Face Space](https://huggingface.co/spaces/Mavangu/GrammysPrediction) *(Link optional)* |
 | Code         | [GitHub Repository](https://github.com/Mavanlet/GrammysPrediction) |
 
 ## Data Sources and Features Used Per Source

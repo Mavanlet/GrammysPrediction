@@ -64,6 +64,11 @@ The Random Forest model consistently outperformed logistic regression in predict
 - **Genre-Specific Models**: Train separate models for different music genres to improve accuracy
 - **External Data Sources**: Add Billboard chart positions, streaming numbers, and social media metrics
 
+**Direct Audio File Upload**: Allow users to upload MP3/WAV files for direct analysis
+- **Audio Feature Extraction**: Implement librosa or Spotify Web API to extract audio features from uploaded files
+- **Real-Time Audio Processing**: Process audio files in real-time to extract danceability, energy, valence, and tempo
+- **Waveform Visualization**: Display audio waveforms and spectrograms alongside predictions
+- **Multi-Format Support**: Support various audio formats (MP3, WAV, FLAC, M4A)
 
 ## Demo App UI
 The Gradio web app (`app.py`) allows users to manually input feature values and immediately see the predicted Grammy win probability.

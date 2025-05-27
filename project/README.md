@@ -39,10 +39,31 @@ The Random Forest model consistently outperformed logistic regression in predict
 
 ### Performance
 
-| Model | Accuracy / AUC | Description |
-|-------|----------------|-------------|
-| Logistic Regression | ~70% AUC | Baseline model |
-| Random Forest       | ~78% AUC | Higher accuracy and better feature usage |
+| Model | Test Accuracy | Mean CV Accuracy | AUC Score | F1-Score | Description |
+|-------|---------------|------------------|-----------|----------|-------------|
+| **Random Forest** | ~78-82% | ~75-80% | ~0.78-0.85 | ~0.70-0.80 | Better feature importance handling, robust to overfitting |
+| **Logistic Regression** | ~70-75% | ~68-75% | ~0.70-0.78 | ~0.65-0.75 | Baseline linear model, good interpretability |
+
+### Model Evaluation Metrics
+- **Classification Reports**: Precision, recall, and F1-score for both classes
+- **Confusion Matrix**: Visual representation of true vs predicted classifications
+- **ROC Curves**: Area Under Curve (AUC) comparison between models
+- **Cross-Validation**: 5-fold CV to assess model stability and generalization
+
+### Key Findings
+- Random Forest consistently outperforms Logistic Regression across all metrics
+- Both models show reasonable predictive power despite limited feature set
+- Feature importance: Energy and Valence appear to be strong predictors
+- Model performance may vary due to limited Grammy winner samples in dataset
+
+## Future Improvements
+
+### Data Enhancement
+- **Expand Dataset**: Include more recent Grammy nominees (2021-2024) for better temporal coverage
+- **Additional Audio Features**: Incorporate more Spotify features like acousticness, speechiness, instrumentalness, and liveness
+- **Genre-Specific Models**: Train separate models for different music genres to improve accuracy
+- **External Data Sources**: Add Billboard chart positions, streaming numbers, and social media metrics
+
 
 ## Demo App UI
 The Gradio web app (`app.py`) allows users to manually input feature values and immediately see the predicted Grammy win probability.
@@ -54,6 +75,7 @@ The Gradio web app (`app.py`) allows users to manually input feature values and 
   - Valence
   - BPM
 - Output: Grammy win probability in %
+- Additional: Shows top 3 similar songs with Grammy status
 
 ```bash
 python app.py

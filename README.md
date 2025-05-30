@@ -6,6 +6,11 @@ Predicts the likelihood that a song will win a Grammy Award based on musical fea
 ## Results
 The Random Forest model consistently outperformed logistic regression in predictive power. Still, with limited data and features, the model may not generalize to all genres or time periods. More diverse data and external validation (e.g., newer nominees) would strengthen the model’s robustness.
 
+### Class Imbalance Impact
+
+Of the 1,994 songs in the Spotify dataset, only 185 are labeled as Grammy winners (~9.3%). This significant class imbalance makes the classification task challenging. Both models, especially Logistic Regression, struggle to correctly identify the positive class, leading to low recall and precision for Grammy-winning songs. This highlights a key limitation: the model currently performs well on the dominant class (non-winners), but underperforms on the minority class. 
+
+
 ### Name & URL
 | Name         | URL |
 |--------------|-----|
@@ -34,27 +39,32 @@ The Random Forest model consistently outperformed logistic regression in predict
 - Spotify datasets: 2000
 
 ### Data Splitting Method (Train/Validation/Test)
-- Data analyzed, processed, and trained in a Jupyter notebook
-- Random Forest and Logistic Regression models trained with the full dataset (no explicit test set, focusing on deployment)
+- The dataset was split using `train_test_split` (80% training, 20% testing) to evaluate model performance on unseen data.
+- Both models (Random Forest and Logistic Regression) were trained on the training set and tested on the holdout test set.
+- In addition, 5-fold cross-validation was performed on the training set to assess model stability and generalization.
 
 ### Performance
 
-| Model | Test Accuracy | Mean CV Accuracy | AUC Score | F1-Score | Description |
-|-------|---------------|------------------|-----------|----------|-------------|
-| **Random Forest** | ~78-82% | ~75-80% | ~0.78-0.85 | ~0.70-0.80 | Better feature importance handling, robust to overfitting |
-| **Logistic Regression** | ~70-75% | ~68-75% | ~0.70-0.78 | ~0.65-0.75 | Baseline linear model, good interpretability |
+| Model               | Test Accuracy | Mean CV Accuracy | AUC Score | F1-Score | Description |
+|---------------------|---------------|------------------|-----------|----------|-------------|
+| **Random Forest**        | 0.62          | 0.61             | 0.59      | 0.67     | Balanced model that is less sensitive to outliers and irregular data. However, in this dataset it showed lower consistency and weaker separation power (AUC). |
+| **Logistic Regression**  | 0.64          | 0.56             | 0.62      | 0.73     | Simple linear model that performed better on this test set, especially in recall and F1-score. Less stable across cross-validation folds. |
+
 
 ### Model Evaluation Metrics
-- **Classification Reports**: Precision, recall, and F1-score for both classes
-- **Confusion Matrix**: Visual representation of true vs predicted classifications
-- **ROC Curves**: Area Under Curve (AUC) comparison between models
-- **Cross-Validation**: 5-fold CV to assess model stability and generalization
+- **Accuracy**: Percentage of correctly predicted Grammy winners in the test set
+- **F1-Score**: Harmonic mean of precision and recall, balancing false positives and negatives
+- **Confusion Matrix**: Used to derive true positives, false positives, and overall accuracy
+- **ROC Curves and AUC Score**: AUC was relatively low (~0.59–0.62), indicating weak separation between classes
+- **Cross-Validation**: 5-fold cross-validation applied to estimate model generalization, with noticeable variation in some folds
+
 
 ### Key Findings
-- Random Forest consistently outperforms Logistic Regression across all metrics
-- Both models show reasonable predictive power despite limited feature set
-- Feature importance: Energy and Valence appear to be strong predictors
-- Model performance may vary due to limited Grammy winner samples in dataset
+- Logistic Regression outperformed Random Forest in test accuracy, F1-score, and AUC on this dataset
+- Both models show limited but usable predictive performance, constrained by the small feature set and dataset size
+- Features such as Energy and Valence appear to be the most influential in determining Grammy win likelihood
+- Model performance likely suffers from imbalanced or limited Grammy-winning song data
+
 
 ## Future Improvements
 

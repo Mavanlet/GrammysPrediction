@@ -35,6 +35,11 @@ Logistic Regression outperformed Random Forest on this dataset, achieving 64% te
 - **Matched songs used for training:** 249 (Grammy + Spotify data)
 - **Train/Test split:** 199 training, 50 testing
 
+### Data Limitations
+- Dataset limited to 249 songs where Grammy nominees could be exactly matched with Spotify audio features
+- Strict string matching may miss some potential matches due to naming variations
+- Model trained on successfully matched subset, representing a sample of Grammy-nominated songs
+
 ### Data Splitting Method (Train/Validation/Test)
 - The dataset was split using `train_test_split` (80% training, 20% testing) to evaluate model performance on unseen data.
 - Both models (Random Forest and Logistic Regression) were trained on the training set and tested on the holdout test set.

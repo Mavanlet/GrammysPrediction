@@ -110,7 +110,6 @@ Both models show underfitting characteristics:
 *Note: Current dataset (249 songs, 4 features) is insufficient for deep learning approaches. Neural networks would severely overfit and perform worse than classical ML models.*
 
 ### Data Enhancement
-- **Expand Dataset**: Include more recent Grammy nominees (2021-2024) for better temporal coverage
 - **Additional Audio Features**: Incorporate more Spotify features like acousticness, speechiness, instrumentalness, and liveness
 - **External Data Sources**: Add Billboard chart positions, streaming numbers, and social media metrics
 
